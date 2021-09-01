@@ -7,19 +7,23 @@ class Environment(object):
         self.locations = [
             {
                 'direction': 'norte',
-                'state': 'limpo'
+                'state': 'limpo',
+                'visited': False
             },
             {
                 'direction': 'sul',
-                'state': 'limpo'
+                'state': 'limpo',
+                'visited': False
             },
             {
                 'direction': 'leste',
-                'state': 'limpo'
+                'state': 'limpo',
+                'visited': False
             },
             {
                 'direction': 'oeste',
-                'state': 'limpo'
+                'state': 'limpo',
+                'visited': False
             }
         ]
 
@@ -55,7 +59,11 @@ class Environment(object):
         return True
     
     def next_location(self):
-        self.agent_location = random.randint(0,3)
+        positions = [index for index, element in enumerate(self.locations) if element['state'] != 'limpo' and not element['visited']]
+
+        index = random.randint(0,len(positions) - 1)
+
+        self.agent_location = positions[index]
     
     def run(self):
         print('O agente esta no centro.')
