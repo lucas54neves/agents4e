@@ -64,6 +64,8 @@ class Environment(object):
         index = random.randint(0,len(positions) - 1)
 
         self.agent_location = positions[index]
+
+        self.locations[positions[index]]['visited'] = True
     
     def run(self):
         print('O agente esta no centro.')
